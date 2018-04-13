@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="RegisterServerUISkin" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" width="520" height="320">
+	<e:Image scale9Grid="33,31,4,6" source="bg14_png" top="20" bottom="0" anchorOffsetY="0" width="480" horizontalCenter="0" locked="true"/>
+
+
+
+
+
+
+
+	<e:Group horizontalCenter="0" bottom="28">
+		<e:Button id="backBtn" y="0" label="返回" x="0" width="150" skinName="Btn3Skin"/>
+		<e:Button id="registerBtn" y="0" label="注册" x="176" skinName="Btn4Skin" width="150"/>
+		<e:layout>
+			<e:HorizontalLayout gap="40"/>
+		</e:layout>
+	</e:Group>
+	<e:Group horizontalCenter="0" bottom="122">
+		<e:TextInput id="nameText" width="300" y="2" skinName="MyTextInputSkin" height="50" x="0" maxChars="7" prompt="名字最长为7个中文" text="12345671234567"/>
+		<e:Group id="randomBtn" y="-4" right="-54">
+
+			<e:Image source="random_btn_png" x="15" y="10" scaleY="0.6" scaleX="0.6"/>
+		</e:Group>
+	</e:Group>
+	<e:Image source="title_bg3_png" y="0" scale9Grid="73,9,62,61" scaleX="1.2" scaleY="1.2" left="0" right="0"/>
+	<e:Label text="创建世界" horizontalCenter="0" y="12" strokeColor="0x000000" textColor="0xffffff" stroke="1"/>
+	<e:Label text="请输入你的世界名称" y="93" size="24" horizontalCenter="0" textColor="0xffe0b2"/>
+
+
+
+
+
+
+
+</e:Skin>
