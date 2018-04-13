@@ -67,7 +67,6 @@ class MainInfoUI extends MainBase {
 
     public onShow(){
         this.renew();
-        this.addPanelOpenEvent(GameEvent.client.tec_change,this.renew)
     }
 
     public renew(){

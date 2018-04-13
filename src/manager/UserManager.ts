@@ -49,6 +49,7 @@ class UserManager {
         ActiveManager.getInstance().init(data.active)
         PropManager.getInstance().init(data)
         RoleManager.getInstance().init(data)
+        WorldManager.getInstance().init(data.world)
     }
 
 

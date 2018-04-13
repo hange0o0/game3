@@ -87,7 +87,6 @@ class SettingUI extends game.BaseWindow {
 
     public onShow(){
         this.renew();
-        this.addPanelOpenEvent(GameEvent.client.head_change,this.renew)
     }
 
     public renew(){

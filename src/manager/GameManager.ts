@@ -58,6 +58,8 @@ class GameManager {
             EM.dispatch(GameEvent.client.pass_day);
         }
         EM.dispatch(GameEvent.client.timer);
+        RoleManager.getInstance().onTimer()
+        WorldManager.getInstance().onTimer()
 
         //if(UM.friendtime == 0){  //拿过日志了
         //    if(now%30 == 0) //5分钟请求一次

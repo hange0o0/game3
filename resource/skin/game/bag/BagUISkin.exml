@@ -13,9 +13,9 @@
 	<e:TabBar id="tab" y="87" itemRendererSkinName="MyTabItemSkin" width="600" horizontalCenter="0">
 		<e:ArrayCollection>
 		<e:Array>
-			<e:Object label="未被发现"/>
-			<e:Object label="等待投入"/>
-			<e:Object label="发现日志"/>
+			<e:Object label="世界中宝物"/>
+			<e:Object label="待投入宝物"/>
+			<e:Object label="被发现宝物"/>
 		</e:Array>
 		</e:ArrayCollection>
 				<e:layout>

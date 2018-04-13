@@ -26,7 +26,7 @@
 //  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //////////////////////////////////////////////////////////////////////////////////////
-var UM:UserManager,TM:TimeManager,EM:EventManager,CM:CacheManager,DM;
+var UM:UserManager,TM:TimeManager,EM:EventManager,CM:CacheManager,DM,WM;
 class Main extends eui.UILayer {
     /**
      * 加载进度界面
@@ -65,6 +65,7 @@ class Main extends eui.UILayer {
         EM = EventManager.getInstance();
         CM = CacheManager.getInstance();
         DM = DebugManager.getInstance();
+        WM = WorldManager.getInstance();
         FromManager.getInstance().initData();
 
         if(_get['hide'])
