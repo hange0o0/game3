@@ -18,11 +18,14 @@ class RoleItem extends game.BaseItem {
     }
 
     private onClick(){
-        //OtherInfoUI.getInstance().show(this.data.gameid);
+        console.log(this.data)
+        RoleInfoUI.getInstance().show(this.data.id);
     }
 
     public dataChanged(){
-
+        var vo:MyRoleVO = this.data;
+          this.nameText.text = vo.name
+          this.forceText.text = vo.force + ''
     }
 
 }

@@ -31,7 +31,8 @@ class UserManager {
     public maxLevel = 50;
 
 
-    public fill(data:any):void{
+    public fill(msg:any):void{
+        var data = msg.data;
         this.gameid = data.gameid;
         this.landid = data.land_key;
         this.nick = data.nick;
@@ -48,8 +49,8 @@ class UserManager {
 
         ActiveManager.getInstance().init(data.active)
         PropManager.getInstance().init(data)
-        RoleManager.getInstance().init(data)
-        WorldManager.getInstance().init(data.world)
+        RoleManager.getInstance().init(msg.game)
+        WorldManager.getInstance().init(msg.game,data.world)
     }
 
 

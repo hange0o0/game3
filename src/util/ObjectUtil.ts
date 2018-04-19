@@ -83,4 +83,15 @@ class ObjectUtil {
         data[key1] = data[key2]
         data[key2] = temp;
     }
+
+    public static objToClass(array: Array<any> | any, cls: any):Array<any> | any{
+        if(!(array instanceof Array)){
+            return new cls(array);
+        }
+        var list = [];
+        for(var i=0; i<array.length; i++){
+            list.push(new cls(array[i]));
+        }
+        return list;
+    }
 }

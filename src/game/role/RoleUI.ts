@@ -27,7 +27,7 @@ class RoleUI extends MainBase {
         this.scroller.viewport = this.list;
 
         this.list.dataProvider = this.dataArray
-        this.list.itemRenderer = BagItem
+        this.list.itemRenderer = RoleItem
 
         this.tab.addEventListener(eui.ItemTapEvent.ITEM_TAP,this.onTab,this);
         this.tab.selectedIndex = 0;
@@ -39,6 +39,15 @@ class RoleUI extends MainBase {
     }
 
     private onTab(){
+
+        if(this.tab.selectedIndex == 1)
+        {
+            var RM = RoleManager.getInstance();
+            RM.getRank(()=>{
+                this.renew();
+            })
+            return
+        }
         this.renew();
     }
 
@@ -52,21 +61,17 @@ class RoleUI extends MainBase {
     }
 
     public renew(){
-        var arr = PropManager.getInstance().getListByType(this.tab.selectedIndex + 1);
-        //if(this.tab.selectedIndex == 1)
-        //{
-        //    var coin = UM.getCoin();
-        //    if(coin)
-        //        arr.unshift({coin:coin});
-        //}
-        //else
-        //{
-        //    this.list.itemRenderer = BagItem2
-        //    this.list.layout['requestedColumnCount'] = 3
-        //    this.list.layout['paddingLeft'] = 50
-        //    this.list.layout['verticalGap'] = 20
-        //    this.list.layout['paddingTop'] = 20
-        //}
+
+        var RM = RoleManager.getInstance();
+        if(this.tab.selectedIndex == 0)
+        {
+            var arr = RM.current;
+            RM.sortRoleArr(arr);
+        }
+        else
+        {
+            var arr = RM.rank;
+        }
         this.dataArray.source = arr
         this.emptyGroup.visible = arr.length == 0;
         this.dataArray.refresh()

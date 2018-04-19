@@ -20,7 +20,7 @@ class MainInfoUI extends MainBase {
 
     private vGroup = new VScrollerGroup();
 
-
+    private first = false
     public constructor() {
         super();
         this.skinName = "MainInfoUISkin";
@@ -37,7 +37,7 @@ class MainInfoUI extends MainBase {
         this.scrollGroup.addChild(this.vGroup)
         this.vGroup.itemRenderer = MainInfoItem;
         this.vGroup.initScroller(this.scroller)
-        this.vGroup.margin = -1;
+        this.vGroup.margin = 10;
         this.vGroup.desTop = 15;
         this.vGroup.marginBottom = 10;
 
@@ -66,13 +66,30 @@ class MainInfoUI extends MainBase {
     }
 
     public onShow(){
+        if(!this.first)
+        {
+            this.validateNow();
+            this.first = true
+        }
+
         this.renew();
+        this.addPanelOpenEvent(GameEvent.client.action_change,this.onActionChange)
+    }
+
+    private onActionChange(e){
+        var arr = e.data;
+        var autoScroll = this.scroller.viewport.scrollV < 20;
+        this.vGroup.addItemsToFront(arr);
+        if(autoScroll)
+        {
+            this.vGroup.scrollToMV(0);
+        }
     }
 
     public renew(){
-        var arr =  []
-        this.vGroup.setData([])
-        this.emptyGroup.visible = arr.length == 0;
+        var WM = WorldManager.getInstance();
+        this.vGroup.setData(WM.history)
+        this.emptyGroup.visible = WM.history.length == 0;
         //this.vGroup.addItems(guests.concat(list));
     }
 }

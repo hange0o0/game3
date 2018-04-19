@@ -91,6 +91,33 @@ class VScrollerGroup extends eui.Group{
         this.dataArr = this.dataArr.concat(data);
         this.renew();
     }
+    public addItemsToFront(data){
+        this.dataArr = data.concat(this.dataArr);
+        var addH = 0
+        var newHeightObj = {};
+        var len = data.length;
+        for(var i=0;i<len;i++)
+        {
+            var h = this.getHeight(data[i]);
+            newHeightObj[i] = h;
+            addH += h;
+        }
+        for(var s in this.heightObj)
+        {
+            newHeightObj[parseInt(s) + len] = this.heightObj[s];
+        }
+        this.heightObj = newHeightObj;
+
+        for(var i=0;i<this.itemArr.length;i++)
+        {
+            this.itemArr[i].y += addH
+        }
+
+        this.scroller.stopAnimation();
+        this.scroller.viewport.scrollV += addH;
+
+        //this.renew();
+    }
     public addItem(data){
         this.dataArr.push(data);
         this.renew();
@@ -131,6 +158,15 @@ class VScrollerGroup extends eui.Group{
             this.scroller.viewport.scrollV = Math.max(0,this.height - this.scroller.height);
         if(v != this.scroller.viewport.scrollV)
             this.onScroll(this.scroller.viewport.scrollV);
+    }
+    public scrollToMV(v){
+        this.scroller.stopAnimation();
+
+        egret.Tween.removeTweens(this.scroller)
+        egret.Tween.get(this.scroller.viewport,{onChange:()=>{
+            this.onScroll(this.scroller.viewport.scrollV);
+        }}).to({scrollV:v},500);
+
     }
 
     public onScroll(v){

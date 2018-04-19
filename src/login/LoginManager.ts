@@ -187,7 +187,7 @@ class LoginManager{
 
             MailManager.getInstance().serverAward = msg.mailnum || 0;
 
-            UM.fill(msg.data);
+            UM.fill(msg);
 
             self.writeDB();
             if(msg.logtext)

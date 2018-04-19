@@ -23,7 +23,7 @@ class GameEvent {
 
 
 
-        news_change:'news_change',
+        action_change:'action_change',
 
 
 
@@ -53,12 +53,10 @@ class GameEvent {
         get_rank:'rank.get_rank'
     }
 
-    public static card = {
-        card_buy:'card.card_buy',
-        card_draw:'card.card_draw',
-        card_like:'card.card_like',
-        card_like_set:'card.card_like_set',
-        card_open:'card.card_open'
+    public static game = {
+        role_info:'game.role_info',
+        role_rank:'game.role_rank',
+        new_action:'game.new_action'
     }
 
     public static mail = {
