@@ -29,6 +29,19 @@ class WorldManager {
         this.action = ObjectUtil.objToClass(gameData.action,MyRoleActionVO);
 
         this.runTime();
+
+        var RM = RoleManager.getInstance();
+        RM.init(gameData);
+        for(var i=0;i<this.history.length;i++)
+        {
+              var hvo = this.history[i];
+            var role = RM.getRole(hvo.id);
+            role.lastAction = hvo;
+        }
+
+
+
+
     }
 
     public now(){
@@ -109,11 +122,21 @@ class WorldManager {
     //取最新世界数据
     public getWorld(fun?){
         var oo:any = {};
-        //Net.send(GameEvent.rank.get_rank,oo,(data) =>{
-        //    var msg = data.msg;
-        //
-        //    if(fun)
-        //        fun();
-        //});
+        Net.addUser(oo)
+        Net.send(GameEvent.game.get_new_action,oo,(data) =>{
+            var msg = data.msg;
+            if(msg.action && msg.action.length > 0)
+                this.action = this.action.concat(ObjectUtil.objToClass(msg.action,MyRoleActionVO));
+            if(msg.role)
+            {
+                var RM = RoleManager.getInstance();
+                for(var s in msg.role)
+                {
+                    RM.renewRole(data.role[s]);
+                }
+            }
+            if(fun)
+                fun();
+        });
     }
 }

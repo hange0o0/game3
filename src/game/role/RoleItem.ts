@@ -26,6 +26,10 @@ class RoleItem extends game.BaseItem {
         var vo:MyRoleVO = this.data;
           this.nameText.text = vo.name
           this.forceText.text = vo.force + ''
+        if(vo.lastAction)
+            this.desText.text = vo.force + ''
+        else
+            this.desText.text = '???'
     }
 
 }

@@ -87,7 +87,7 @@ class RoleManager {
             {
                 for(var i=0;i<msg.role_action.length;i++)
                 {
-                    var vo = new MyRoleActionVO(msg.role_action)
+                    var vo = new MyRoleActionVO(msg.role_action[i])
                     if(vo.time <= WorldManager.getInstance().now())
                         role.addAction(vo);
                 }
@@ -107,7 +107,7 @@ class RoleManager {
         }
         var oo:any = {};
         oo.gameid = UM.gameid;
-        Net.send(GameEvent.game.role_info,oo,(data) =>{
+        Net.send(GameEvent.game.role_rank,oo,(data) =>{
             var msg = data.msg;
             var rankRoleID = {};
             this.rank = [];

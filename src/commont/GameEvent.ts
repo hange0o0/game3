@@ -56,7 +56,7 @@ class GameEvent {
     public static game = {
         role_info:'game.role_info',
         role_rank:'game.role_rank',
-        new_action:'game.new_action'
+        get_new_action:'game.get_new_action'
     }
 
     public static mail = {

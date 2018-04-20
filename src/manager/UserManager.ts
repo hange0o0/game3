@@ -49,7 +49,7 @@ class UserManager {
 
         ActiveManager.getInstance().init(data.active)
         PropManager.getInstance().init(data)
-        RoleManager.getInstance().init(msg.game)
+
         WorldManager.getInstance().init(msg.game,data.world)
     }
 

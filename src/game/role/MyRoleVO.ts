@@ -7,6 +7,7 @@ class MyRoleVO {
     public dieTime;
     public force //战力
     public action //待触发的
+    public lastAction
 
     public constructor(data?: any) {
         if(data)
@@ -35,15 +36,20 @@ class MyRoleVO {
         if(data.a)
         {
             this.action = ObjectUtil.objToClass(data.a,MyRoleActionVO);
+            this.lastAction = this.action[0];
         }
     }
 
     //测试可生效的
     public addAction(vo:MyRoleActionVO){
         if(!this.action)
+        {
+            this.lastAction = vo;
             return;
+        }
         if(this.action[0] && vo.time <= this.action[0].time)
             return;
+        this.lastAction = vo;
         this.action.unshift(vo);
         this.force += vo.force
         if(vo.type == 1)
