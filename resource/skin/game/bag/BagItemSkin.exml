@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="BagItemSkin" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" width="620">
-	<e:Image y="0" height="90" left="0" right="0" scale9Grid="10,10,10,7" source="bg11_png"/>
-	<e:Group x="10" verticalCenter="0">
-		<e:Image width="70" height="70" x="0" y="0" scale9Grid="9,9,12,11" source="bg3_png"/>
-		<e:Image id="mc" width="60" height="60" source="bg5_png" horizontalCenter="0" verticalCenter="0"/>
-	</e:Group>
-	<e:Label id="nameText" text="Label" y="15" size="28" x="90" stroke="2"/>
-	<e:Label id="desText" text="Label" y="49.56" size="22" x="90" strokeColor="0x1c0c00" textColor="0xffd4a0" stroke="1"/>
-	<e:Label id="timeText" text="Label" size="24" verticalCenter="0" right="20"/>
-	<e:Button id="btn" label="投入世界" skinName="Btn1Skin" width="130" verticalCenter="0" right="10" visible="false"/>
+<e:Skin class="BagItemSkin" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" width="610" height="50">
+	<e:Image left="0" right="0" scale9Grid="10,10,10,7" source="bg11_png" top="0" bottom="0"/>
+	<e:Label id="nameText" text="避免使用老的" size="24" stroke="2" x="20" verticalCenter="0"/>
+	<e:Label id="qualityText" text="RRRRR" size="22" horizontalCenter="250" verticalCenter="0"/>
+	<e:Label id="typeText" text="武功秘籍" size="22" horizontalCenter="140" verticalCenter="0"/>
 </e:Skin>

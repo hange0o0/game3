@@ -11,6 +11,9 @@ class BagUI extends MainBase {
     private list: eui.List;
     private tab: eui.TabBar;
     private emptyGroup: eui.Group;
+    private propGroup: eui.Group;
+    private addBtn: eui.Button;
+
 
 
 

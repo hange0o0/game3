@@ -9,7 +9,7 @@ class RoleInfoUI extends game.BaseWindow {
 
     private scroller: eui.Scroller;
     private list: eui.List;
-    private titleText: eui.Label;
+    private headMC: HeadMC;
     private desText: eui.Label;
 
 
@@ -52,8 +52,9 @@ class RoleInfoUI extends game.BaseWindow {
 
     public renew(){
         var role =  RoleManager.getInstance().getRole(this.dataIn);
-        this.titleText.text = role.name;
-        this.desText.text = ''
+        //this.titleText.text = role.name;
+        this.desText.text = role.name
         this.list.dataProvider = new eui.ArrayCollection(role.action)
+        this.headMC.data = role.head
     }
 }

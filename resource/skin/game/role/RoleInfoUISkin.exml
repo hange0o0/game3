@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<e:Skin class="RoleInfoUISkin" width="600" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" height="800">
+<e:Skin class="RoleInfoUISkin" width="600" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*" height="720">
 	<e:Image scale9Grid="33,31,4,6" x="0" y="0" width="100%" height="100%" source="bg14_png"/>
 
-	<e:Scroller id="scroller" width="540" horizontalCenter="0" top="280" bottom="30" minHeight="200" maxHeight="500" bounces="false">
+	<e:Scroller id="scroller" width="540" horizontalCenter="0" top="250" bottom="30" minHeight="200" maxHeight="500" bounces="false">
 		<e:Group>
 			<e:List id="list" width="500" minHeight="200" itemRendererSkinName="AwardItemSkin" x="0">
 				<e:layout>
@@ -11,12 +11,9 @@
 			</e:List>
 		</e:Group>
 	</e:Scroller>
-	<e:Group y="25" horizontalCenter="0">
-		<e:Image source="title_bg3_png" scale9Grid="83,9,37,61" width="420" x="0" y="0"/>
-		<e:Label id="titleText" text="afasd " y="10.18" size="24" stroke="2" strokeColor="0x140000" horizontalCenter="0"/>
-	</e:Group>
-	<e:Group y="110" left="30" right="30">
-		<e:Image source="bg3_png" scale9Grid="16,15,7,7" height="160" y="0" x="0" width="100%"/>
-		<e:Label id="desText" text="Label" size="24" stroke="2" verticalAlign="top" lineSpacing="10" textAlign="left" left="15" right="15" top="15" bottom="15"/>
+	<e:Group y="25" left="30" right="30" anchorOffsetY="0">
+		<e:Image source="bg3_png" scale9Grid="16,15,7,7" height="200" y="0" x="0" width="100%" anchorOffsetY="0"/>
+		<ns1:HeadMC id="headMC" x="10" skinName="HeadMCSkin" verticalCenter="0" width="180" height="180"/>
+		<e:Label id="desText" text="Label" size="24" stroke="2" verticalAlign="top" lineSpacing="10" textAlign="left" left="200" right="10" top="10" bottom="10"/>
 	</e:Group>
 </e:Skin>

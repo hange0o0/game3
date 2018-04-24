@@ -70,7 +70,7 @@ class MyTool {
         //if(isRound)
         //    return MonsterVO.getObject(id).thumbRound
         //return MonsterVO.getObject(id).thumb
-        return Config.localResRoot + 'head/m_head'+id+'.jpg';
+        return Config.localResRoot + 'head1/h_'+id+'.jpg';
     }
     public static removeMC(mc:any){
         if(mc && mc.parent)

@@ -27,7 +27,7 @@ class RoleItem extends game.BaseItem {
           this.nameText.text = vo.name
           this.forceText.text = vo.force + ''
         if(vo.lastAction)
-            this.desText.text = vo.force + ''
+            this.setHtml(this.desText,vo.lastAction.getDes());
         else
             this.desText.text = '???'
     }

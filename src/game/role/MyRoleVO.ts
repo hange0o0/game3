@@ -3,6 +3,7 @@ class MyRoleVO {
     public id
     public name //arr
     public gender
+    public head
     public born //出生
     public dieTime;
     public force //战力
@@ -28,6 +29,7 @@ class MyRoleVO {
         this.testFillKey(data,'b','born');
         this.testFillKey(data,'d','dieTime');
         this.testFillKey(data,'f','force');
+        this.testFillKey(data,'h','head');
         if(data.n)
         {
             this.name = Base64.decode(data.n);
@@ -88,7 +90,9 @@ class MyRoleActionVO {
         this.testFillKey(data,'f','force');
         this.testFillKey(data,'ty','type');
         this.remark = data.r.split('#');
+    }
 
-
+    public getDes(){
+        return '+' + this.force;
     }
 }

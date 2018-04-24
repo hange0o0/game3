@@ -38,8 +38,8 @@ class MainInfoUI extends MainBase {
         this.vGroup.itemRenderer = MainInfoItem;
         this.vGroup.initScroller(this.scroller)
         this.vGroup.margin = 10;
-        this.vGroup.desTop = 15;
-        this.vGroup.marginBottom = 10;
+        this.vGroup.desTop = 10;
+        //this.vGroup.marginBottom = 10;
 
     }
 

@@ -46,6 +46,7 @@
 		"bin-debug/game/bag/BagUI.js",
 		"bin-debug/game/bag/PropManager.js",
 		"bin-debug/game/common/AwardUI.js",
+		"bin-debug/game/common/HeadMC.js",
 		"bin-debug/game/mail/MailInfoUI.js",
 		"bin-debug/game/mail/MailItem.js",
 		"bin-debug/game/mail/MailManager.js",

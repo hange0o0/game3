@@ -12,7 +12,7 @@ class RoleInfoItem extends game.BaseItem {
 
     public dataChanged(){
         var vo:MyRoleActionVO = this.data;
-        this.text.text = '+' + vo.force;
+        this.setHtml(this.text,vo.getDes());
     }
 
 }

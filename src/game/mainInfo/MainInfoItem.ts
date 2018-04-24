@@ -4,7 +4,17 @@ class MainInfoItem extends game.BaseItem {
         this.skinName = "MainInfoItemSkin";
     }
 
-    private text: eui.Label;
+    private nameText: eui.Label;
+    private desText: eui.Label;
+    private forceGroup: eui.Group;
+    private forceText0: eui.Label;
+    private arrow: eui.Image;
+    private forceText: eui.Label;
+    private headMC: HeadMC;
+
+
+
+
 
 
 
@@ -23,7 +33,29 @@ class MainInfoItem extends game.BaseItem {
     public dataChanged(){
         var vo:MyRoleActionVO = this.data;
         var role = RoleManager.getInstance().getRole(vo.id)
-        this.text.text = role.name + '+' + vo.force;
+        this.nameText.text =  role.name;
+        if(vo.force > 0)
+        {
+            this.forceGroup.visible = true;
+            this.forceText0.text = (role.force - vo.force) + '';
+            this.forceText.text = role.force + '';
+            if(vo.force > 0)
+            {
+                this.arrow.source = 'arrow5_png'
+                this.arrow.rotation = 90
+            }
+            else
+            {
+                this.arrow.source = 'arrow4_png'
+                this.arrow.rotation = -90
+            }
+        }
+        else
+        {
+            this.forceGroup.visible = false;
+        }
+        this.setHtml(this.desText,vo.getDes());
+        this.headMC.data = role.head
     }
 
 }

@@ -28,7 +28,7 @@ class WorldManager {
         this.history = ObjectUtil.objToClass(gameData.history,MyRoleActionVO);
         this.action = ObjectUtil.objToClass(gameData.action,MyRoleActionVO);
 
-        this.runTime();
+
 
         var RM = RoleManager.getInstance();
         RM.init(gameData);
@@ -40,7 +40,7 @@ class WorldManager {
         }
 
 
-
+        this.runTime();
 
     }
 
