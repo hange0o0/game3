@@ -6,12 +6,13 @@ class RoleManager {
         return this._instance;
     }
     public roleObj = {};//所有角色数据合集
-    public rankMax = 30;
+
 
     public current
     public rank
+    public die
     public tempRank = [];//不知道要不要放进排行榜的角色
-    //public dieRole = []//本次死亡的单位
+    public tempDie = [];//不知道要不要放进死亡的角色
     public newDie = []//新死亡还没提示的
 
     public news = []//新消息
@@ -64,6 +65,9 @@ class RoleManager {
     public sortRoleArr(arr){
         ArrayUtil.sortByField(arr,['force','born'],[1,0])
     }
+    public sortRoleArrByDie(arr){
+        ArrayUtil.sortByField(arr,['dieTime','born'],[1,0])
+    }
 
 
     //取最新世界数据
@@ -111,15 +115,15 @@ class RoleManager {
             var msg = data.msg;
             var rankRoleID = {};
             this.rank = [];
-            for(var s in data.role)//能进排行榜都是死了的
+            for(var s in msg.role)//能进排行榜都是死了的
             {
-                this.renewRole(data.role[s]);
+                this.renewRole(msg.role[s]);
             }
-            for(var s in data.list)
+            for(var s in msg.list)
             {
-                var role = this.getRole(data.list[s]);
+                var role = this.getRole(msg.list[s]);
                 this.rank.push(role);
-                rankRoleID = role.id;
+                rankRoleID[role.id] = true;
             }
 
             if(this.tempRank.length)//测试新死亡的要加回排行榜
@@ -131,8 +135,54 @@ class RoleManager {
                         this.rank.push(role);
                 }
                 this.sortRoleArr(this.rank)
-                if(this.rank.length > this.rankMax)
-                    this.rank.length = this.rankMax;
+                if(this.rank.length > GameConfig.rankMax)
+                    this.rank.length = GameConfig.rankMax;
+            }
+            else
+                this.sortRoleArr(this.rank)
+
+
+            if(fun)
+                fun();
+        });
+    }
+
+    //取最新死亡数据
+    public getDie(fun?){
+        if(this.die)
+        {
+            if(fun)
+                fun();
+            return;
+        }
+        var oo:any = {};
+        oo.gameid = UM.gameid;
+        Net.send(GameEvent.game.role_die,oo,(data) =>{
+            var msg = data.msg;
+            var dieRoleID = {};
+            this.die = [];
+            for(var s in msg.role)//能进排行榜都是死了的
+            {
+                this.renewRole(msg.role[s]);
+            }
+            for(var s in msg.list)
+            {
+                var role = this.getRole(msg.list[s]);
+                this.die.push(role);
+                dieRoleID[role.id];
+            }
+
+            if(this.tempDie.length)//测试新死亡的要加回
+            {
+                for(var i=0;i<this.tempDie.length;i++)
+                {
+                    var role = <MyRoleVO>this.tempDie[i];
+                    if(!dieRoleID[role.id])
+                        this.tempDie.push(role);
+                }
+                this.sortRoleArrByDie(this.die)
+                if(this.die.length > GameConfig.dieMax)
+                    this.die.length = GameConfig.dieMax;
             }
 
 

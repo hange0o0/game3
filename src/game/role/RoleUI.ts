@@ -46,9 +46,14 @@ class RoleUI extends MainBase {
             RM.getRank(()=>{
                 this.renew();
             })
-            return
         }
-        this.renew();
+        else
+        {
+            var RM = RoleManager.getInstance();
+            RM.getDie(()=>{
+                this.renew();
+            })
+        }
     }
 
     public hide() {
@@ -56,17 +61,18 @@ class RoleUI extends MainBase {
     }
 
     public onShow(){
-        this.renew();
+        this.onTab();
         //this.addPanelOpenEvent(ServerEvent.Client.BUSINESS_BUILDING_RENEW,this.renew)
     }
 
     public renew(){
-
         var RM = RoleManager.getInstance();
         if(this.tab.selectedIndex == 0)
         {
             var arr = RM.current;
             RM.sortRoleArr(arr);
+            if(RM.die && RM.die.length)
+                arr = arr.concat(RM.die)
         }
         else
         {

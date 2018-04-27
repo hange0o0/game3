@@ -306,6 +306,16 @@ class MyTool {
 
     //把单个字符翻译为数字
     public static str2Num(str){
+        var num = 0;
+        var arr = str.split('');
+        var len = arr.length;
+        for(var i=0;i<len;i++)
+        {
+            num += Math.pow(62,len-i-1)*this._str2Num(arr[i]);
+        }
+        return num;
+    }
+    private static _str2Num(str){
         var code = str.charCodeAt(0);
         if(code < 58)
             return code - 48;

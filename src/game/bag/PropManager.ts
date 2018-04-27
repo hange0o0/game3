@@ -7,27 +7,71 @@ class PropManager {
     }
 
     public props
-    public use_prop
+    public remove_prop
 
     public init(data){
-       this.props = data.prop || {};
-       this.use_prop = data.use_prop || {};
+       this.props = ObjectUtil.objToClass(data.list,MyPropVO);
+       this.remove_prop = ObjectUtil.objToClass(data.remove,MyPropVO);
     }
 
-    public getNum(id){
-       return this.props[id] || 0
-    }
-
-    public getListByType(type){
-        var arr = [];
-        for(var s in this.props)
+    public dealRemoveProp(arr){
+        if(!arr || !this.props)
+            return;
+        for(var i=0;i<arr.length;i++)
         {
-            var vo = PropVO.getObject(s);
-            if(this.props[s] && vo.type == type)
-            {
-                arr.push(vo);
-            }
+            var temp = arr[i].split('@')
+            var index = ArrayUtil.indexOf(this.props,temp[0],'id')//this.props.indexOf(temp[0]);
+            if(index != -1)
+                this.props.splice(index,1);
+            this.remove_prop.push(new MyPropVO(arr[i]));
         }
-        return arr;
+    }
+
+   public getList(){
+       //清除已被用的
+       var list = this.props.concat();
+       var t = WM.now();
+       for(var i=0;i<this.remove_prop.length;i++)
+       {
+            var temp = this.remove_prop[i]
+           if(temp.useTime > t)
+               list.push(temp)
+           else
+           {
+               this.remove_prop.splice(i,1);
+               i--;
+           }
+       }
+       return list;
+   }
+
+    public getServerProp(fun?){
+        var oo:any = {};
+        Net.addUser(oo)
+        Net.send(GameEvent.game.get_prop,oo,(data) =>{
+            var msg = data.msg;
+            this.init(msg.prop);
+            if(fun)
+                fun();
+        });
+    }
+
+    //抽道具
+    public drawProp(num,fun?){
+        var oo:any = {};
+        oo.num = num;
+        Net.addUser(oo)
+        Net.send(GameEvent.game.draw_prop,oo,(data) =>{
+            var msg = data.msg;
+            if(msg.fail)
+            {
+                MyWindow.Alert('投入宝物出错！错误码：'+ msg.fail)
+                return;
+            }
+            this.props = this.props.concat(ObjectUtil.objToClass(msg.prop,MyPropVO))
+            EM.dispatch(GameEvent.client.prop_change);
+            if(fun)
+                fun(msg.prop);
+        });
     }
 }

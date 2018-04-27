@@ -14,7 +14,7 @@ class WorldManager {
     public force
 
 
-    public createCD = 60 * 30//每次生成
+
 
 
     public history//已发生的事件
@@ -71,7 +71,7 @@ class WorldManager {
         var t = this.now()
         var news = [];
         var RM = RoleManager.getInstance();
-        while(this.action[0])
+        while(this.action && this.action[0])
         {
             var action:MyRoleActionVO = this.action[0];
             if(action.time > t)
@@ -96,6 +96,20 @@ class WorldManager {
     }
 
     //测试是否可以上榜
+    private testAddDie(role){
+        var RM = RoleManager.getInstance();
+        if(!RM.die)
+        {
+            RM.tempDie.push(role);
+            return;
+        }
+        RM.die.unshift(role)
+        if( RM.die.length > GameConfig.dieMax)
+            RM.die.length = GameConfig.dieMax;
+        return true
+    }
+
+    //测试是否可以上榜
     private testAddRank(role){
         var RM = RoleManager.getInstance();
         if(!RM.rank)
@@ -103,17 +117,18 @@ class WorldManager {
             RM.tempRank.push(role);
             return;
         }
-        if(RM.rank.length < RM.rankMax)
+        if(RM.rank.length < GameConfig.rankMax)
         {
             RM.rank.push(role)
             RM.sortRoleArr(RM.rank)
             return true
         }
-        if(RM.rank[RM.rankMax-1].force < role.force)
+        if(RM.rank[GameConfig.rankMax-1].force < role.force)
         {
             RM.rank.pop();
-            RM.rank.push(role)
-            RM.sortRoleArr(RM.rank)
+            RM.rank.push(role);
+            RM.sortRoleArr(RM.rank);
+            RM.rank.length = GameConfig.rankMax;
             return true
         }
         return false
@@ -135,6 +150,7 @@ class WorldManager {
                     RM.renewRole(data.role[s]);
                 }
             }
+            PropManager.getInstance().dealRemoveProp(msg.remove_prop)
             if(fun)
                 fun();
         });

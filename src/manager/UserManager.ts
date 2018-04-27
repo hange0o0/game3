@@ -48,8 +48,6 @@ class UserManager {
 
 
         ActiveManager.getInstance().init(data.active)
-        PropManager.getInstance().init(data)
-
         WorldManager.getInstance().init(msg.game,data.world)
     }
 

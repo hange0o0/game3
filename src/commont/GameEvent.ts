@@ -56,6 +56,9 @@ class GameEvent {
     public static game = {
         role_info:'game.role_info',
         role_rank:'game.role_rank',
+        role_die:'game.role_die',
+        draw_prop:'game.draw_prop',
+        get_prop:'game.get_prop',
         get_new_action:'game.get_new_action'
     }
 

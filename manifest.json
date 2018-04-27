@@ -11,7 +11,7 @@
 	"game": [
 		"bin-debug/commont/BaseUI.js",
 		"bin-debug/game/main/MainBase.js",
-		"bin-debug/game/role/RoleItem.js",
+		"bin-debug/game/role/RoleInfoItem.js",
 		"bin-debug/MainLoadingUI.js",
 		"bin-debug/MsgingUI.js",
 		"bin-debug/ThemeAdapter.js",
@@ -41,9 +41,11 @@
 		"bin-debug/debug/DebugUI.js",
 		"bin-debug/debug/ScrollTest.js",
 		"bin-debug/game/active/ActiveManager.js",
+		"bin-debug/game/bag/BagDrawUI.js",
 		"bin-debug/game/bag/BagInfoUI.js",
 		"bin-debug/game/bag/BagItem.js",
 		"bin-debug/game/bag/BagUI.js",
+		"bin-debug/game/bag/MyPropVO.js",
 		"bin-debug/game/bag/PropManager.js",
 		"bin-debug/game/common/AwardUI.js",
 		"bin-debug/game/common/HeadMC.js",
@@ -59,10 +61,11 @@
 		"bin-debug/game/rank/RankItem.js",
 		"bin-debug/game/rank/RankManager.js",
 		"bin-debug/game/rank/RankUI.js",
+		"bin-debug/game/role/GameConfig.js",
 		"bin-debug/game/role/MyRoleVO.js",
-		"bin-debug/game/role/RoleInfoItem.js",
+		"bin-debug/util/StringUtil.js",
 		"bin-debug/game/role/RoleInfoUI.js",
-		"bin-debug/LoadingUI.js",
+		"bin-debug/game/role/RoleItem.js",
 		"bin-debug/game/role/RoleManager.js",
 		"bin-debug/game/role/RoleUI.js",
 		"bin-debug/game/role/WorldManager.js",
@@ -114,6 +117,6 @@
 		"bin-debug/util/ObjectUtil.js",
 		"bin-debug/util/PopUpManager.js",
 		"bin-debug/util/ShapeObject.js",
-		"bin-debug/util/StringUtil.js"
+		"bin-debug/LoadingUI.js"
 	]
 }

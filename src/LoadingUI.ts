@@ -69,16 +69,22 @@ class LoadingUI extends egret.Sprite {
 
 
 
-        var data:any = RES.getRes("loading_ani" +  "_json"); //qid
-        var texture:egret.Texture = RES.getRes("loading_ani" + "_png");
-        var mcFactory = new egret.MovieClipDataFactory(data, texture);
-        this.loadingMC = new egret.MovieClip();
-        this.loadingMC.scaleX = this.loadingMC.scaleY = 1.5
+        //var data:any = RES.getRes("loading_ani" +  "_json"); //qid
+        //var texture:egret.Texture = RES.getRes("loading_ani" + "_png");
+        //var mcFactory = new egret.MovieClipDataFactory(data, texture);
+        //this.loadingMC = new egret.MovieClip();
+        //this.loadingMC.scaleX = this.loadingMC.scaleY = 1.5
+        //this.addChild(this.loadingMC);
+        //this.loadingMC.movieClipData = mcFactory.generateMovieClipData('loading_ani');
+        //this.loadingMC.x = 220;
+
+        this.loadingMC = new eui.Image();
+        //this.loadingMC.scaleX = this.loadingMC.scaleY = 1.5
+        this.loadingMC.source = 'ui_loading_png'
         this.addChild(this.loadingMC);
-        this.loadingMC.movieClipData = mcFactory.generateMovieClipData('loading_ani');
-        this.loadingMC.x = 220;
-
-
+        this.loadingMC.x = 320;
+        this.loadingMC.anchorOffsetX = 70/2
+        this.loadingMC.anchorOffsetY = 70/2
 
 
     }
@@ -89,11 +95,14 @@ class LoadingUI extends egret.Sprite {
         this.width = 640;
         this.height = GameManager.stage.stageHeight;
         this.shape.height = GameManager.stage.stageHeight;
-        this.loadingMC.gotoAndPlay(1,-1)
+        //this.loadingMC.gotoAndPlay(1,-1)
         this.loadingMC.y = this.height/2 - 100;
         this.textField.y = this.height/2;
 
-        MyTool.setHtml(this.infoText,HelpManager.getInstance().getInfoText());
+        var tw = egret.Tween.get(this.loadingMC,{loop:true})
+        tw.to({rotation:0}).to({rotation:360},1000);
+
+        //MyTool.setHtml(this.infoText,HelpManager.getInstance().getInfoText());
         this.infoText.y = this.height - this.infoText.textHeight - 20;
         if(this.infoText.numLines > 1)
             this.infoText.textAlign = 'left'
@@ -115,7 +124,8 @@ class LoadingUI extends egret.Sprite {
     }
 
     public hide(){
+        egret.Tween.removeTweens(this.loadingMC)
         MyTool.removeMC(this);
-        this.loadingMC.stop();
+        //this.loadingMC.stop();
     }
 }

@@ -11,6 +11,10 @@
 		{
 			"keys":"state1_png,card_back_bg_light2_png,card_back_bg_light1_png,card_battle_png,card_battle2_png,totem_png,totem_1_png,icon_def_bg_png",
 			"name":"pk"
+		},
+		{
+			"keys":"bag_mv_json,bag_mv_png",
+			"name":"bag"
 		}
 	],
 	"resources":[
@@ -892,6 +896,16 @@
 			"name":"border_mv10_png",
 			"type":"image",
 			"url":"game_assets/mv/border_mv10.png"
+		},
+		{
+			"name":"bag_mv_json",
+			"type":"json",
+			"url":"game_assets/bag/bag_mv.json"
+		},
+		{
+			"name":"bag_mv_png",
+			"type":"image",
+			"url":"game_assets/bag/bag_mv.png"
 		}
 	]
 }

@@ -23,6 +23,10 @@ class BagItem extends game.BaseItem {
     }
 
     public dataChanged(){
+        var data:MyPropVO = this.data;
+        this.nameText.text = data.name
+        this.setHtml(this.typeText,data.getTypeText())
+        this.setHtml(this.qualityText,data.getQualityText())
         //if(this.data.coin)
         //{
         //    this.nameText.text = '金币'

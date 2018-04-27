@@ -9,12 +9,11 @@ class MainInfoUI extends MainBase {
 
     private mailBtn: eui.Group;
     private mailRed: eui.Image;
-    private rankBtn: eui.Group;
-    private shopBtn: eui.Group;
     private settingBtn: eui.Group;
     private scroller: eui.Scroller;
     private scrollGroup: eui.Group;
     private emptyGroup: eui.Group;
+
 
 
 
@@ -30,8 +29,8 @@ class MainInfoUI extends MainBase {
         super.childrenCreated();
 
         this.addBtnEvent(this.mailBtn,this.onMail)
-        this.addBtnEvent(this.rankBtn,this.onRank)
-        this.addBtnEvent(this.shopBtn,this.onShop)
+        //this.addBtnEvent(this.rankBtn,this.onRank)
+        //this.addBtnEvent(this.shopBtn,this.onShop)
         this.addBtnEvent(this.settingBtn,this.onSetting)
 
         this.scrollGroup.addChild(this.vGroup)
