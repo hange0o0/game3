@@ -8,6 +8,7 @@ class PropManager {
 
     public props
     public remove_prop
+    public propLog
 
     public init(data){
        this.props = ObjectUtil.objToClass(data.list,MyPropVO);
@@ -46,11 +47,34 @@ class PropManager {
    }
 
     public getServerProp(fun?){
+        if(this.props)
+        {
+            if(fun)
+                fun();
+            return;
+        }
         var oo:any = {};
         Net.addUser(oo)
         Net.send(GameEvent.game.get_prop,oo,(data) =>{
             var msg = data.msg;
             this.init(msg.prop);
+            if(fun)
+                fun();
+        });
+    }
+
+    public getPropLog(fun?){
+        if(this.propLog)
+        {
+            if(fun)
+                fun();
+            return;
+        }
+        var oo:any = {};
+        Net.addUser(oo)
+        Net.send(GameEvent.game.get_prop,oo,(data) =>{
+            var msg = data.msg;
+            this.propLog = ObjectUtil.objToClass(msg.list,MyRoleActionVO);
             if(fun)
                 fun();
         });

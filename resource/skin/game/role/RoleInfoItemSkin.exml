@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="RoleInfoItemSkin" width="540" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Image source="bg9_png" scale9Grid="12,12,4,5" left="0" right="0" top="0" bottom="0"/>
-	<e:Label id="text" text="Label" left="10" right="10" top="10" bottom="10" size="22"/>
+	<e:Group id="con" left="10" right="10" top="10" bottom="10">
+		<e:Label id="text" text="12345" size="22" x="0" y="5" width="100%" lineSpacing="5"/>
+		<e:Group id="forceGroup" y="0" x="435">
+			<e:Image id="arrow" x="0" y="0" source="arrow4_png"/>
+			<e:Label id="force" text="+234" x="437" y="3" size="22"/>
+			<e:layout>
+			<e:HorizontalLayout verticalAlign="middle"/>
+			</e:layout>
+		</e:Group>
+		<e:layout>
+			<e:HorizontalLayout verticalAlign="middle"/>
+		</e:layout>
+	</e:Group>
 </e:Skin>

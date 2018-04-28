@@ -77,9 +77,13 @@ class MyRoleActionVO {
     public time//生效时间
     public force //增加战力
     public remark //描述数据
-    public type //类型 0普通 1出生，2死亡
+    public type //类型 0普通 1出生，2死亡 ,3用道具
 
     public id;//拥有者ID
+
+    public userName
+    public userGender
+    public userHead
 
 
 
@@ -95,14 +99,54 @@ class MyRoleActionVO {
     }
 
     public fill(data){
-        this.testFillKey(data,'id','id');
-        this.testFillKey(data,'t','time');
-        this.testFillKey(data,'f','force');
-        this.testFillKey(data,'ty','type');
-        this.remark = data.r.split(',');
+        if(typeof data == 'string')
+        {
+            var temp = data.split('@')
+            this.id = parseInt(temp[1]);
+            this.time = parseInt(temp[0]);
+            this.force = parseInt(temp[2]);
+            this.type = parseInt(temp[3]);
+            this.remark = temp[4].split(',');
+            var log = temp[5];
+            if(log)
+            {
+                 this.userHead = MyTool.str2Num(log.substr(0,2))
+                 this.userGender = parseInt(log.charAt(2))
+                 this.userName = Base64.decode(log.substr(3))
+            }
+        }
+        else
+        {
+            this.testFillKey(data,'id','id');
+            this.testFillKey(data,'t','time');
+            this.testFillKey(data,'f','force');
+            this.testFillKey(data,'ty','type');
+            this.remark = data.r.split(',');
+        }
+
     }
 
     public getDes(){
-        return '+' + this.force;
+        return ActionManager.getInstance().getDes(this)
     }
+}
+
+
+class MyPlaceVO {
+    public name//
+    public type //
+
+    public constructor(data?: any) {
+        if(data)
+            this.fill(data);
+
+    }
+
+
+    public fill(data){
+        var arr = data.split('#')
+        this.type = MyTool.str2Num(arr[0]);
+        this.name = Base64.decode(arr[1]);
+    }
+
 }

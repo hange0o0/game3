@@ -76,7 +76,10 @@ class RoleUI extends MainBase {
         }
         else
         {
-            var arr = RM.rank;
+            var arr = RM.rank.concat(RM.current);
+            RM.sortRoleArr(arr);
+            if(arr.length > GameConfig.rankMax)
+                arr.length = GameConfig.rankMax
         }
         this.dataArray.source = arr
         this.emptyGroup.visible = arr.length == 0;

@@ -74,11 +74,10 @@ class WorldManager {
         while(this.action && this.action[0])
         {
             var action:MyRoleActionVO = this.action[0];
-            if(action.time > t)
+            var role = RM.getRole(action.id);
+            if(action.time +  role.born> t)
                   break;
             this.action.shift();
-
-            var role = RM.getRole(action.id);
             role.addAction(action);
             news.push(action);
             if(role.dieTime > 100)
@@ -89,6 +88,17 @@ class WorldManager {
                 {
                     var index = RM.current.indexOf(role.id);
                     RM.current.splice(index,1)
+                }
+            }
+
+            if(action.type == 3)
+            {
+                if(PropManager.getInstance().propLog)
+                {
+                    action.userGender = role.gender
+                    action.userHead = role.head
+                    action.userName = role.name
+                    PropManager.getInstance().propLog.unshift(action);
                 }
             }
         }

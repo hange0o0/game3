@@ -37,17 +37,21 @@ class MainInfoItem extends game.BaseItem {
         if(vo.force > 0)
         {
             this.forceGroup.visible = true;
-            this.forceText0.text = (role.force - vo.force) + '';
+            //this.forceText0.text = (role.force - vo.force) + '';
             this.forceText.text = role.force + '';
             if(vo.force > 0)
             {
                 this.arrow.source = 'arrow5_png'
                 this.arrow.rotation = 90
+                this.forceText0.textColor = 0x66fd34
+                this.forceText0.text = '+' +  vo.force;
             }
             else
             {
                 this.arrow.source = 'arrow4_png'
                 this.arrow.rotation = -90
+                this.forceText0.text = '' +  vo.force;
+                this.forceText0.textColor = 0xfc7431
             }
         }
         else

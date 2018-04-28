@@ -47,7 +47,19 @@ class BagUI extends MainBase {
     }
 
     private onTab(){
-        this.renew();
+        if(this.tab.selectedIndex == 0)
+        {
+            PropManager.getInstance().getServerProp(()=>{
+                this.renew();
+            })
+        }
+        else
+        {
+            PropManager.getInstance().getPropLog(()=>{
+                this.renew();
+            })
+        }
+
     }
 
     public hide() {
@@ -55,29 +67,21 @@ class BagUI extends MainBase {
     }
 
     public onShow(){
-        PropManager.getInstance().getServerProp(()=>{
-            this.renew();
-        })
 
+        this.onTab();
         this.addPanelOpenEvent(GameEvent.client.prop_change,this.renew)
     }
 
     public renew(){
         var arr = PropManager.getInstance().getList();
-        //if(this.tab.selectedIndex == 1)
-        //{
-        //    var coin = UM.getCoin();
-        //    if(coin)
-        //        arr.unshift({coin:coin});
-        //}
-        //else
-        //{
-        //    this.list.itemRenderer = BagItem2
-        //    this.list.layout['requestedColumnCount'] = 3
-        //    this.list.layout['paddingLeft'] = 50
-        //    this.list.layout['verticalGap'] = 20
-        //    this.list.layout['paddingTop'] = 20
-        //}
+        if(this.tab.selectedIndex == 1)
+        {
+            var arr = PropManager.getInstance().propLog;
+        }
+        else
+        {
+            var arr = PropManager.getInstance().getList();
+        }
         this.dataArray.source = arr
         this.emptyGroup.visible = arr.length == 0;
         this.dataArray.refresh()

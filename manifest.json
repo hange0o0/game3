@@ -61,9 +61,10 @@
 		"bin-debug/game/rank/RankItem.js",
 		"bin-debug/game/rank/RankManager.js",
 		"bin-debug/game/rank/RankUI.js",
+		"bin-debug/game/role/ActionManager.js",
 		"bin-debug/game/role/GameConfig.js",
 		"bin-debug/game/role/MyRoleVO.js",
-		"bin-debug/util/StringUtil.js",
+		"bin-debug/LoadingUI.js",
 		"bin-debug/game/role/RoleInfoUI.js",
 		"bin-debug/game/role/RoleItem.js",
 		"bin-debug/game/role/RoleManager.js",
@@ -117,6 +118,6 @@
 		"bin-debug/util/ObjectUtil.js",
 		"bin-debug/util/PopUpManager.js",
 		"bin-debug/util/ShapeObject.js",
-		"bin-debug/LoadingUI.js"
+		"bin-debug/util/StringUtil.js"
 	]
 }
