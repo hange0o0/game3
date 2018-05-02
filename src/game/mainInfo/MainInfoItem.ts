@@ -59,7 +59,7 @@ class MainInfoItem extends game.BaseItem {
             this.forceGroup.visible = false;
         }
         this.setHtml(this.desText,vo.getDes());
-        this.headMC.data = role.head
+        this.headMC.setData(role.head,role.gender)
     }
 
 }

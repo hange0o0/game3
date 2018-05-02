@@ -59,6 +59,7 @@ class GameEvent {
         role_die:'game.role_die',
         draw_prop:'game.draw_prop',
         get_prop:'game.get_prop',
+        get_prop_log:'game.get_prop_log',
         get_new_action:'game.get_new_action'
     }
 

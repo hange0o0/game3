@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="BagLogItemSkin" width="610" height="120" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*">
+	<e:Image left="0" right="0" scale9Grid="10,10,10,7" source="bg11_png" top="0" bottom="0"/>
+	<e:Label id="nameText" text="Label" x="120" y="10"/>
+	<e:Label id="desText" text="Label" y="55" size="24" left="120" right="20" verticalAlign="top" lineSpacing="6" anchorOffsetX="0"/>
+	<e:Label id="timeText" text="Label" y="12" textColor="0xffe193" size="22" right="10"/>
+	<ns1:HeadMC id="headMC" x="10" skinName="HeadMCSkin" verticalCenter="-1"/>
+</e:Skin>

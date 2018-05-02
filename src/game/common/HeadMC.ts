@@ -22,13 +22,14 @@ class HeadMC extends game.BaseItem {
         this.setData(this.data,0);
     }
 
-    public setData(head,type?){
+    public setData(head,gender?){
 
         this.mc.source = MyTool.getHeadUrl(head || 1)
-        if(type)
+        if(gender)
         {
             this.rect.visible = true
             this.bg.visible = false
+            this.rect.fillColor = gender == 1?0x5198ff:0xff517e
         }
         else
         {

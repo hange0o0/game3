@@ -13,6 +13,8 @@ class BagUI extends MainBase {
     private emptyGroup: eui.Group;
     private propGroup: eui.Group;
     private addBtn: eui.Button;
+    private desText: eui.Label;
+
 
 
 
@@ -29,7 +31,13 @@ class BagUI extends MainBase {
         this.scroller.viewport = this.list;
 
         this.list.dataProvider = this.dataArray
-        this.list.itemRenderer = BagItem
+
+        var self = this;
+        this.list.itemRendererFunction = function(){
+            if(self.tab.selectedIndex == 0)
+                return BagItem
+            return BagLogItem
+        }
 
         this.tab.addEventListener(eui.ItemTapEvent.ITEM_TAP,this.onTab,this);
         this.tab.selectedIndex = 0;
@@ -77,10 +85,13 @@ class BagUI extends MainBase {
         if(this.tab.selectedIndex == 1)
         {
             var arr = PropManager.getInstance().propLog;
+            this.currentState = 's2'
         }
         else
         {
             var arr = PropManager.getInstance().getList();
+            this.currentState = 's1'
+            this.desText.text = '剩余宝物数量：' + arr.length
         }
         this.dataArray.source = arr
         this.emptyGroup.visible = arr.length == 0;

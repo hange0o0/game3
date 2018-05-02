@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="BagItemSkin" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" width="610" height="50">
-	<e:Image left="0" right="0" scale9Grid="10,10,10,7" source="bg11_png" top="0" bottom="0"/>
-	<e:Label id="nameText" text="避免使用老的" size="24" stroke="2" x="20" verticalCenter="0"/>
-	<e:Label id="qualityText" text="RRRRR" size="22" horizontalCenter="250" verticalCenter="0"/>
-	<e:Label id="typeText" text="武功秘籍" size="22" horizontalCenter="140" verticalCenter="0"/>
+<e:Skin class="BagItemSkin" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" width="630" height="50">
+	<e:Label id="nameText" text="避免使用老的" size="24" stroke="2" x="55" verticalCenter="0"/>
+	<e:Label id="qualityText" text="RRRRR" size="22" horizontalCenter="240" verticalCenter="0"/>
+	<e:Label id="typeText" text="武功秘籍" size="22" horizontalCenter="130" verticalCenter="0"/>
+	<e:Rect width="100%" height="1" x="0" bottom="-2" fillColor="0x6b3f11"/>
+	<e:Image id="mc" source="gender_1_png" x="20" verticalCenter="0"/>
 </e:Skin>

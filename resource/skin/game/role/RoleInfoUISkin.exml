@@ -1,19 +1,36 @@
 <?xml version='1.0' encoding='utf-8'?>
-<e:Skin class="RoleInfoUISkin" width="600" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*" height="720">
+<e:Skin class="RoleInfoUISkin" width="570" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*" height="720">
 	<e:Image scale9Grid="33,31,4,6" x="0" y="0" width="100%" height="100%" source="bg14_png"/>
 
-	<e:Scroller id="scroller" width="540" horizontalCenter="0" top="250" bottom="30" minHeight="200" maxHeight="500" bounces="false">
+	<e:Scroller id="scroller" width="540" top="215" bottom="15" minHeight="200" maxHeight="500" bounces="false" horizontalCenter="0">
 		<e:Group>
 			<e:List id="list" width="500" minHeight="200" itemRendererSkinName="AwardItemSkin" x="0">
 				<e:layout>
-				<e:VerticalLayout verticalAlign="middle" gap="8"/>
+				<e:VerticalLayout verticalAlign="middle" gap="8" paddingTop="10"/>
 				</e:layout>
 			</e:List>
 		</e:Group>
 	</e:Scroller>
-	<e:Group y="25" left="30" right="30" anchorOffsetY="0">
-		<e:Image source="bg3_png" scale9Grid="16,15,7,7" height="200" y="0" x="0" width="100%" anchorOffsetY="0"/>
+	<e:Group y="15" left="15" right="15" anchorOffsetY="0">
+		<e:Image source="bg3_png" scale9Grid="16,15,7,7" height="200" y="0" x="0" width="100%" anchorOffsetY="0" visible="false"/>
 		<ns1:HeadMC id="headMC" x="10" skinName="HeadMCSkin" verticalCenter="0" width="180" height="180"/>
-		<e:Label id="desText" text="Label" size="24" stroke="2" verticalAlign="top" lineSpacing="10" textAlign="left" left="200" right="10" top="10" bottom="10"/>
+		<e:Group x="200" y="12">
+			<e:Label id="nameText" text="Label" size="30" stroke="2" verticalAlign="top" lineSpacing="10" textAlign="left" y="0" x="0" height="40"/>
+			<e:Group x="4.25" y="39.39" height="36">
+				<e:Image source="icon_force2_png" x="0" scaleX="0.7" scaleY="0.7" verticalCenter="0"/>
+				<e:Label id="forceText" text="Label" size="24" stroke="2" verticalAlign="top" lineSpacing="10" textAlign="left" x="35" verticalCenter="0" textColor="0xffe2a3"/>
+			</e:Group>
+			<e:Group x="24.25" y="59.39" height="36">
+				<e:Image x="3" verticalCenter="0.5" source="icon_clock_png"/>
+				<e:Label id="ageText" text="Label" size="24" stroke="2" verticalAlign="top" lineSpacing="10" textAlign="left" x="35" verticalCenter="0" textColor="0xffe2a3"/>
+			</e:Group>
+			<e:Group x="14.25" y="49.39" height="36">
+				<e:Image id="genderMC" source="gender_1_png" x="3" verticalCenter="0.5"/>
+				<e:Label id="genderText" text="Label" size="24" stroke="2" verticalAlign="top" lineSpacing="10" textAlign="left" x="35" verticalCenter="0" textColor="0xffe2a3"/>
+			</e:Group>
+			<e:layout>
+				<e:VerticalLayout/>
+			</e:layout>
+		</e:Group>
 	</e:Group>
 </e:Skin>

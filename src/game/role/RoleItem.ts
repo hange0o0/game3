@@ -26,7 +26,7 @@ class RoleItem extends game.BaseItem {
 
     public dataChanged(){
         var vo:MyRoleVO = this.data;
-        this.headMC.setData(vo.head)
+        this.headMC.setData(vo.head,vo.gender)
           this.nameText.text = vo.name
           this.forceText.text = vo.force + ''
         if(vo.dieTime)

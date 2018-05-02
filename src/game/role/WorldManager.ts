@@ -44,6 +44,23 @@ class WorldManager {
 
     }
 
+    public getStringBySeconds(cd){
+        var step = GameConfig.yearCD;
+        var year = Math.floor(cd/step);
+        var month =  Math.floor((cd%step)/(GameConfig.yearCD/12))
+        if(cd<step)
+        {
+            return Math.max(1,month) + '个月前'
+        }
+        //if(cd>step * 2)
+        //{
+        //    month = 0;
+        //}
+
+        return   year + '年' +(month?month + '个月':'') + '前'
+
+    }
+
     public now(){
         return TM.now() - this.beginTime - this.iceTime
     }
@@ -59,7 +76,7 @@ class WorldManager {
     }
 
     private testGetData(){
-         if(this.now() > this.beginTime + this.lastTime - 60)//提前1分钟请求
+         if(this.now() > this.lastTime - 60)//提前1分钟请求
          {
              this.lastTime +=10;
              this.getWorld()
@@ -157,9 +174,10 @@ class WorldManager {
                 var RM = RoleManager.getInstance();
                 for(var s in msg.role)
                 {
-                    RM.renewRole(data.role[s]);
+                    RM.renewRole(msg.role[s]);
                 }
             }
+            this.lastTime = msg.lasttime
             PropManager.getInstance().dealRemoveProp(msg.remove_prop)
             if(fun)
                 fun();

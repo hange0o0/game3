@@ -9,10 +9,16 @@ class PropManager {
     public props
     public remove_prop
     public propLog
+    public freetime
 
     public init(data){
        this.props = ObjectUtil.objToClass(data.list,MyPropVO);
        this.remove_prop = ObjectUtil.objToClass(data.remove,MyPropVO);
+       this.freetime = data.freetime || 0;
+    }
+
+    public getFreeCD(){
+        return Math.max(0,this.freetime + 4*3600 - TM.now());
     }
 
     public dealRemoveProp(arr){
@@ -72,7 +78,7 @@ class PropManager {
         }
         var oo:any = {};
         Net.addUser(oo)
-        Net.send(GameEvent.game.get_prop,oo,(data) =>{
+        Net.send(GameEvent.game.get_prop_log,oo,(data) =>{
             var msg = data.msg;
             this.propLog = ObjectUtil.objToClass(msg.list,MyRoleActionVO);
             if(fun)
@@ -92,6 +98,8 @@ class PropManager {
                 MyWindow.Alert('投入宝物出错！错误码：'+ msg.fail)
                 return;
             }
+            if(!num)
+                this.freetime = TM.now();
             this.props = this.props.concat(ObjectUtil.objToClass(msg.prop,MyPropVO))
             EM.dispatch(GameEvent.client.prop_change);
             if(fun)

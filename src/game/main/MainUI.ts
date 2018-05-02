@@ -150,6 +150,18 @@ class MainUI extends game.BaseUI {
         egret.Tween.removeTweens(this.con)
         this.currentUI.x = 0
         this.con.x = 0
+
+        this.nameText.text = UM.nick
+
+        this.renewLevel();
+        this.renewDiamond();
+    }
+
+    private renewDiamond(){
+        this.diamondText.text = UM.diamond + ''
+    }
+    private renewLevel(){
+        this.levelText.text = 'LV.' + UM.level
     }
 
 

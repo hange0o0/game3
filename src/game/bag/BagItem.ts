@@ -7,6 +7,7 @@ class BagItem extends game.BaseItem {
     private nameText: eui.Label;
     private qualityText: eui.Label;
     private typeText: eui.Label;
+    private mc: eui.Image;
 
 
 

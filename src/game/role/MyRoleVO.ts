@@ -55,7 +55,8 @@ class MyRoleVO {
             return;
         this.lastAction = vo;
         this.action.unshift(vo);
-        this.force += vo.force
+        if(vo.force)
+            this.force += vo.force
         if(vo.type == 2)
         {
             this.dieTime = vo.time;
